@@ -23,7 +23,6 @@ export class StoreSection extends React.Component {
   }
 
   render() {
-    const {priceInEth} = this.props;
     return (
       <div>
         <ModalComponent
@@ -35,7 +34,7 @@ export class StoreSection extends React.Component {
           <div className="container">
             <div className="row">
               <ArtistSection />
-              <AlbumSection price={priceInEth} />
+              <AlbumSection />
             </div>
           </div>
         </div>
