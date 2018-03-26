@@ -17,13 +17,7 @@ class BuyButton extends React.Component {
     clicking the MetaMask extension icon in your browser 
     and then clicking the network name in the top left corner.`
   }
-
-  /*
-    CODE GOES HERE
-    Note: make sure that you are only requesting
-    price when connected to the proper network
-  */
-
+  
   getButton = () => {
     if(this.props.web3.get("isMobile")){
       return <button onClick={() => this.props.displayModal(this.chromeMessage)} type="button" className="gradient">Learn More</button>

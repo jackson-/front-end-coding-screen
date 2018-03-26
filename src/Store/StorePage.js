@@ -5,7 +5,7 @@ import ModalComponent from '../Modal/Modal';
 import ArtistSection from './ArtistSection';
 import AlbumSection from './AlbumSection';
 import { closeModal } from '../Modal/modalActions';
-import { checkForWeb3 } from '../Web3/actions';
+import { checkForWeb3, getPriceInEth } from '../Web3/actions';
 import './store.css';
 
 export class StoreSection extends React.Component {
@@ -18,9 +18,12 @@ export class StoreSection extends React.Component {
     if(this.props.web3.get('hasWeb3') !== true){
       this.props.checkForWeb3()
     }
+    this.props.getPriceInEth()
+
   }
 
   render() {
+    const {priceInEth} = this.props;
     return (
       <div>
         <ModalComponent
@@ -32,7 +35,7 @@ export class StoreSection extends React.Component {
           <div className="container">
             <div className="row">
               <ArtistSection />
-              <AlbumSection />
+              <AlbumSection price={priceInEth} />
             </div>
           </div>
         </div>
@@ -44,7 +47,7 @@ export class StoreSection extends React.Component {
 function mapStateToProps(state, props) {
   return {
     modal: state.get('modal'),
-    web3: state.get('web3')
+    web3: state.get('web3'),
   };
 }
 
@@ -52,6 +55,7 @@ function mapDispatchToProps(dispatch, props) {
   return {
     checkForWeb3: () => dispatch(checkForWeb3()),
     closeModal: () => dispatch(closeModal()),
+    getPriceInEth: () => dispatch(getPriceInEth()),
   }
 }
 

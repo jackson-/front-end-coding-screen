@@ -4,11 +4,21 @@ import Truffle from 'truffle-contract';
 import Web3 from 'web3';
 
 let oracle;
+let deployed;
 
 const initializeContract = () => {
   oracle = Truffle(OracleContracts.USDETHOracle);
   oracle.setProvider(web3.currentProvider);
-  debugger
+  return oracle.deployed()
+};
+
+export const getPriceInEth = () => async dispatch => {
+  const instance = await initializeContract()
+  const price = await instance.ethUsdUint()
+  dispatch({
+    type: 'GETTING_PRICE_IN_ETH',
+    priceInETH: 10/price,
+  });
 };
 
 const web3Found = () => {
@@ -64,16 +74,3 @@ export const checkMetaMask = () => {
 };
 
 // spoofed web3 call for the price
-export const getPriceInUsd = () => async dispatch => {
-  dispatch({
-    type: 'GETTING_PRICE_IN_USD',
-    priceInETHString: 'null',
-  });
-  initializeContract()
-  // setTimeout(async () => {
-  //   dispatch({
-  //     type: 'GOT_PRICE_IN_USD',
-  //     priceInETHString: '10',
-  //   });
-  // }, 8000);
-};

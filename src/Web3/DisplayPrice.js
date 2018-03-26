@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-
 export class DisplayPrice extends React.Component {
 
   isNumeric(n) {
@@ -9,8 +8,8 @@ export class DisplayPrice extends React.Component {
   }
 
   render() {
-    const priceNumeric = this.isNumeric(this.props.priceInEth);
-    const displayPrice = priceNumeric ? Number(this.props.priceInEth).toFixed(5) : this.props.priceInEth;
+    const priceNumeric = this.isNumeric(this.props.priceInETH);
+    const displayPrice = priceNumeric ? Number(this.props.priceInETH).toFixed(5) : this.props.priceInETH;
     return (
       <div className="info-price">{displayPrice} ETH <span className="usd">(10 USD)</span></div>
     );
@@ -20,13 +19,11 @@ export class DisplayPrice extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    priceInEth: state.get('priceInEth'),
+    priceInETH: state.get('priceInETH'),
   };
 }
 
 export default connect(
   mapStateToProps,
-  {
-
-  },
+  null,
 )(DisplayPrice);

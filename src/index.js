@@ -11,7 +11,7 @@ import thunk from 'redux-thunk';
 import { fromJS } from 'immutable';
 
 const initialState = fromJS({
-  priceInUsd: 'open MetaMask for ',
+  priceInEth: 'open MetaMask for ',
   web3: {
     validNetwork: false,
     metamaskUnlocked: false,

@@ -2,8 +2,8 @@ import { fromJS } from 'immutable';
 
 const MainReducer = (state = fromJS({}), action) => {
   switch (action.type) {
-    case 'GETTING_PRICE_IN_USD':
-      return state;
+    case 'GETTING_PRICE_IN_ETH':
+      return state.setIn(['priceInETH'], action.priceInETH);
     case 'GOT_PRICE_IN_USD':
       return state;
     case 'WEB3_FOUND':

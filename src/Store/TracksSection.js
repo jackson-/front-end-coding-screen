@@ -27,7 +27,6 @@ export default class TracksSection extends React.Component {
       },
     });
     setTimeout(() => {
-      console.log("TRACKS", this.tracks)
       const tracksDomNode = ReactDOM.findDOMNode(this.tracks);
       const tracksBound = tracksDomNode.getBoundingClientRect();
       this.setState({ tracksHeight: tracksBound.height });
