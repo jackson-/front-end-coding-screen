@@ -15,6 +15,9 @@ export class TxSection extends React.Component {
   buyAlbum = () => { alert('Buying Album'); }
 
   getInfoMessage = () => {
+    if(this.props.web3.get('hasWeb3') === false){
+      return "The Ujo Store needs you to have Web3 to facilate purchases."
+    }
     if(this.props.web3.get("isMobile")){
       return "The Ujo Store is currently incompatible with mobile browsers."
     } else if(!this.props.web3.get("isChrome")){

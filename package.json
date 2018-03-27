@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "immutable": "^3.8.2",
     "moment": "^2.20.1",
     "node-sass-chokidar": "0.0.3",
@@ -13,6 +15,7 @@
     "react-scripts": "1.0.17",
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
+    "redux-mock-store": "^1.5.1",
     "redux-thunk": "^2.2.0",
     "truffle-contract": "^3.0.4",
     "ujo-contracts-oracle": "git+https://github.com/UjoTeam/contracts-oracle.git",

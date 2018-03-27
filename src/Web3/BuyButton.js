@@ -19,14 +19,17 @@ class BuyButton extends React.Component {
   }
   
   getButton = () => {
+    if(!this.props.web3.get("hasWeb3")){
+      return <button id="buy-btn" onClick={() => this.props.displayModal(this.chromeMessage)} type="button" className="gradient">Learn More</button>
+    }
     if(this.props.web3.get("isMobile")){
-      return <button onClick={() => this.props.displayModal(this.chromeMessage)} type="button" className="gradient">Learn More</button>
+      return <button id="buy-btn" onClick={() => this.props.displayModal(this.chromeMessage)} type="button" className="gradient">Learn More</button>
     } else if(!this.props.web3.get("isChrome")){
-      return <button onClick={() => this.props.displayModal(this.chromeMessage)}>How To Buy Album</button>
+      return <button id="buy-btn" onClick={() => this.props.displayModal(this.chromeMessage)}>How To Buy Album</button>
     } else if(!this.props.web3.get("metamaskUnlocked") || !this.props.web3.get("validNetwork")){
-      return <button onClick={() => this.props.displayModal(this.metaMaskMessage)}>How To Buy Album</button>
+      return <button id="buy-btn" onClick={() => this.props.displayModal(this.metaMaskMessage)}>How To Buy Album</button>
     } else {
-      return <button onClick={this.props.buyAlbum}>Buy Album</button>
+      return <button id="buy-btn" onClick={this.props.buyAlbum}>Buy Album</button>
     }
   }
 
