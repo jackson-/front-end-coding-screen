@@ -47,17 +47,18 @@ export const checkForWeb3 = () => dispatch => {
     dispatch(web3Found())
     web3.eth.net.getNetworkType()
     .then((network) => {
-      if(network !== "private"){
+      if(network !== "rinkeby"){
         dispatch(setValidNetwork({
-          validNetwork: true,
+          validNetwork: false,
         }))
         dispatch(checkMetaMask())
       } else{
         dispatch(web3Found())
         dispatch(setValidNetwork({
-          validNetwork: false,
+          validNetwork: true,
         }))
         dispatch(checkMetaMask())
+        dispatch(getPriceInEth())
       }
     })
   } else {

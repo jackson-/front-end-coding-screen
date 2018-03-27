@@ -12,7 +12,7 @@ class BuyButton extends React.Component {
      for instructions on how to buy.`
     this.metaMaskMessage = `You need to be signed into your 
     MetaMask account and be connected the correct ethereum 
-    network to buy the album. Please connect to the Main 
+    network to buy the album. Please connect to the Rinkeby 
     Network. Using Metamask, you can switch networks by 
     clicking the MetaMask extension icon in your browser 
     and then clicking the network name in the top left corner.`
@@ -23,7 +23,7 @@ class BuyButton extends React.Component {
       return <button onClick={() => this.props.displayModal(this.chromeMessage)} type="button" className="gradient">Learn More</button>
     } else if(!this.props.web3.get("isChrome")){
       return <button onClick={() => this.props.displayModal(this.chromeMessage)}>How To Buy Album</button>
-    } else if(!this.props.web3.get("metamaskUnlocked")){
+    } else if(!this.props.web3.get("metamaskUnlocked") || !this.props.web3.get("validNetwork")){
       return <button onClick={() => this.props.displayModal(this.metaMaskMessage)}>How To Buy Album</button>
     } else {
       return <button onClick={this.props.buyAlbum}>Buy Album</button>
